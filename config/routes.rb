@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root :to => 'home#index'
+  get 'facebook/webhook' => 'facebook#verify'
+  post 'facebook/webhook' => 'facebook#webhook'
+
   mount ShopifyApp::Engine, at: '/'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
