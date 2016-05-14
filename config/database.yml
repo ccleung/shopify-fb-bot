@@ -23,6 +23,8 @@ default: &default
 
 development:
   <<: *default
+  host: <%= `docker-machine ip default`.to_s.strip %>
+  username: shopify-fb-bot
   database: shopify-fb-bot_development
 
   # The specified database role being used to connect to postgres.
@@ -57,6 +59,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: <%= `docker-machine ip default`.to_s.strip %>
+  username: shopify-fb-bot
   database: shopify-fb-bot_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
