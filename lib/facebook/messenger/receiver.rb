@@ -14,6 +14,10 @@ module Facebook
             entry[:messaging].each do |msg_event|
               # TODO: default for unhandled event
               event_type = event_type(msg_event)
+              unless event_type
+                handle_unsupported_event(msg_event)
+                next
+              end
               event_class = event_type.classify
               event = "Facebook::Messenger::Event::#{event_class}".constantize.new(msg_event)
               SUBSCRIBERS[event_type].call(event)
@@ -24,13 +28,11 @@ module Facebook
         def event_type(msg_event)
           return 'message' if msg_event[:message]
           return 'postback' if msg_event[:postback]
-          handle_unsupported_event(msg_event)
+          return 'delivery' if msg_event[:delivery]
         end
 
         def handle_unsupported_event(msg_event)
-          binding.pry
-          event = Facebook::Messenger::Event::Base.new(msg_event)
-          Facebook::Messenger::Client.send_message_text(event.sender_id, "unsupported event: #{msg_event}")
+          Rails.logger.info "unsupported event: #{msg_event}"
         end
       end
     end
