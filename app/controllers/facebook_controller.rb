@@ -1,4 +1,13 @@
-class FacebookController < ActionController::Base
+class FacebookController < ApplicationController
+  protect_from_forgery with: :null_session
+  before_action :set_session_id, only: [:webhook]
+  around_filter :shopify_session, only: [:webhook]
+
+  def set_session_id
+    # TODO: make this more flexible...
+    session[:shopify] = 1
+  end
+
   def verify
     verify_token = Facebook::Messenger.config.verify_token
     return render text: params['hub.challenge'] if params['hub.verify_token'] == verify_token
@@ -6,6 +15,7 @@ class FacebookController < ActionController::Base
   end
 
   def webhook
+    @products = ShopifyAPI::Product.find(:all, :params => {:limit => 10})
     messaging_events = params[:entry][0][:messaging]
     messaging_events.each do |msg_event|
       sender = msg_event[:sender][:id]
