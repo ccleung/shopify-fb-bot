@@ -1,4 +1,6 @@
 class FacebookController < ApplicationController
+  # TODO: map page id to shopify shop id
+  PAGE_ID = 859_312_544_198_429
   protect_from_forgery with: :null_session
   before_action :set_session_id, only: [:webhook]
   around_filter :shopify_session, only: [:webhook]
@@ -15,20 +17,21 @@ class FacebookController < ApplicationController
   end
 
   def webhook
-    @products = ShopifyAPI::Product.find(:all, :params => {:limit => 10})
-    messaging_events = params[:entry][0][:messaging]
-    messaging_events.each do |msg_event|
-      sender = msg_event[:sender][:id]
-      if msg_event[:postback]
-        msg_data = send_text_message_data("postback received: #{msg_event[:postback]}")
-        send_message(sender, msg_data)
-      elsif msg_event[:message] && msg_event[:message][:text]
-        text = msg_event[:message][:text]
-        msg_data = send_text_message_data(text)
-        msg_data = generic_message_data if text.downcase == 'generic'
-        send_message(sender, msg_data)
-      end
-    end
+    # @products = ShopifyAPI::Product.find(:all, :params => {:limit => 10})
+    Facebook::Messenger::Receiver.receive(params[:entry])
+    # messaging_events = params[:entry][0][:messaging]
+    # messaging_events.each do |msg_event|
+    #   sender = msg_event[:sender][:id]
+    #   if msg_event[:postback]
+    #     msg_data = send_text_message_data("postback received: #{msg_event[:postback]}")
+    #     send_message(sender, msg_data)
+    #   elsif msg_event[:message] && msg_event[:message][:text]
+    #     text = msg_event[:message][:text]
+    #     msg_data = send_text_message_data(text)
+    #     msg_data = generic_message_data if text.downcase == 'generic'
+    #     send_message(sender, msg_data)
+    #   end
+    # end
     head 200
   end
 
