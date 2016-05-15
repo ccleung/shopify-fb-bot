@@ -1,6 +1,8 @@
 # https://github.com/hyperoslo/facebook-messenger
 require 'facebook/messenger/configuration'
 require 'facebook/messenger/client'
+require 'facebook/messenger/templates/shopify_product'
+require 'facebook/messenger/templates/shopify_products'
 require 'facebook/messenger/events/base'
 require 'facebook/messenger/events/message'
 require 'facebook/messenger/events/postback'

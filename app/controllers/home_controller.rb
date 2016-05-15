@@ -4,9 +4,4 @@ class HomeController < ShopifyApp::AuthenticatedController
     binding.pry
     @products
   end
-
-  def login_again_if_different_shop
-    binding.pry
-    super
-  end
 end
