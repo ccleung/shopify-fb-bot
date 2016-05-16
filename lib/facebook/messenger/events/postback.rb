@@ -4,7 +4,7 @@ module Facebook
       #postback event
       class Postback < Base
         def payload
-          @event_data[:payload]
+          @event_data[:postback][:payload]
         end
       end
     end

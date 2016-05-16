@@ -25,10 +25,17 @@ module Facebook
             },
             {
               type: 'postback',
-              title: 'Postback',
-              payload: 'Payload for first element in a generic bubble'
+              title: 'View Details',
+              payload: view_details_payload
             }
           ]
+        end
+
+        def view_details_payload
+          {
+            type: 'view_details',
+            id: @product.id
+          }.to_json
         end
 
         def price
