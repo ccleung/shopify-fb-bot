@@ -4,7 +4,7 @@ module Facebook
       # subscribers listen to events
       # and handle them in a call method
       class Message < Base
-        NOT_FOUND = 'Sorry, we could not find the product your were looking for'.freeze
+        NOT_FOUND = "Sorry, we could not find the product your were looking for. Please type in a video game e.g., 'minecraft'".freeze
         def call(event)
           products = shopify_products(event.text)
           if products && products.length > 0
