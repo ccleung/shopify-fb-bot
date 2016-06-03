@@ -16,3 +16,11 @@
     <li><%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %></li>
   <% end %>
 </ul>
+
+<% if @shop.facebook_id %>
+  <p>Current Facebook Page ID Linked: <%= @shop.facebook_id %></p>
+<% else %>
+  <p> Please set a Facebook Page ID to connect your shop to Facebook Messenger </p>
+<% end %>
+
+<%= link_to 'Set/Update Facebook Page ID', edit_shop_path %>

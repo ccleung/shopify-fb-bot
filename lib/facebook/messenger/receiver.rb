@@ -7,7 +7,7 @@ module Facebook
     class Receiver
       class << self
         # expecting params[:entry]
-        def receive(entries)
+        def receive(entries, shop_session)
           entries.each do |entry|
             # TODO: save page id's
             puts "PAGE_ID: #{entry[:id]}"
@@ -20,7 +20,7 @@ module Facebook
               end
               event_class = event_type.classify
               event = "Facebook::Messenger::Event::#{event_class}".constantize.new(msg_event)
-              SUBSCRIBERS[event_type].call(event)
+              SUBSCRIBERS[event_type].call(event, shop_session)
             end
           end
         end

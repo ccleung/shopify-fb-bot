@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root :to => 'home#index'
+
+  get 'shop', to: 'shops#edit'
+  match 'shop', to: 'shops#update', via: [:put, :patch], as: :edit_shop
+
   get 'facebook/webhook' => 'facebook#verify'
   post 'facebook/webhook' => 'facebook#webhook'
 
