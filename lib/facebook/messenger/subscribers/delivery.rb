@@ -4,7 +4,7 @@ module Facebook
       # subscribers listen to events
       # and handle them in a call method
       class Delivery < Base
-        def call(event, shop_session)
+        def call(event, opts = {})
           # Do nothing for now on delivery
         end
       end

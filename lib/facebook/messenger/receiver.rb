@@ -1,13 +1,10 @@
 module Facebook
   module Messenger
-    # EVENTS = {
-    #   'message' => Facebook::Messenger::Event::Message
-    # }.freeze
     # handles the incoming fb webhook data
     class Receiver
       class << self
         # expecting params[:entry]
-        def receive(entries, shop_session)
+        def receive(entries, opts = {})
           entries.each do |entry|
             # TODO: save page id's
             puts "PAGE_ID: #{entry[:id]}"
@@ -20,9 +17,21 @@ module Facebook
               end
               event_class = event_type.classify
               event = "Facebook::Messenger::Event::#{event_class}".constantize.new(msg_event)
-              SUBSCRIBERS[event_type].call(event, shop_session)
+              config[event_type].call(event, opts)
             end
           end
+        end
+
+        def configure
+          yield self
+        end
+
+        def subscribe(event, subscriber)
+          config[event] = subscriber
+        end
+
+        def config
+          @_config ||= {}
         end
 
         def event_type(msg_event)

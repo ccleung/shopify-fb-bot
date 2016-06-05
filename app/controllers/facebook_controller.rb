@@ -9,7 +9,8 @@ class FacebookController < ApplicationController
   end
 
   def webhook
-    Facebook::Messenger::Receiver.receive(params[:entry], shop_session)
+    Facebook::Messenger::Receiver.receive(params[:entry],
+                                          shop_session: shop_session)
     head 200
   end
 

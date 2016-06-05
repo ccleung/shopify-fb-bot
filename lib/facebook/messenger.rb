@@ -16,12 +16,6 @@ require 'facebook/messenger/receiver'
 module Facebook
   # containers configuration
   module Messenger
-    SUBSCRIBERS = {
-      'message' => Facebook::Messenger::Subscriber::Message.new,
-      'postback' => Facebook::Messenger::Subscriber::ViewDetails.new,
-      'delivery' => Facebook::Messenger::Subscriber::Delivery.new
-    }.freeze
-
     class << self
       def configure
         yield config
