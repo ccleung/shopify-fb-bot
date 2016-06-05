@@ -41,7 +41,7 @@ module Facebook
         end
 
         def handle_unsupported_event(msg_event)
-          Rails.logger.info "unsupported event: #{msg_event}"
+          Rails.logger.info ">>> unsupported event: #{msg_event}"
         end
       end
     end

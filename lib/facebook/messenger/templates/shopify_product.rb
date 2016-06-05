@@ -19,9 +19,9 @@ module Facebook
         def buttons
           [
             {
-              type: 'web_url',
-              url: 'https://www.messenger.com/',
-              title: 'Web url'
+              type: 'postback',
+              title: 'Order',
+              payload: order_info_payload
             },
             {
               type: 'postback',
@@ -29,6 +29,13 @@ module Facebook
               payload: view_details_payload
             }
           ]
+        end
+
+        def order_info_payload
+          {
+            type: 'order',
+            id: @product.id
+          }.to_json
         end
 
         def view_details_payload
