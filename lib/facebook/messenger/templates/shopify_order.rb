@@ -2,8 +2,28 @@ module Facebook
   module Messenger
     module Template
       class ShopifyOrder
-        def initialize(product)
+        def initialize(order, product, user_info)
+          @order = order
+          # only support purchase of one product
+          # at a time for now
           @product = product
+          @user_info = user_info
+        end
+
+        def name
+          "#{@user_info['first_name']} #{@user_info['last_name']}"
+        end
+
+        def price
+          @order.line_items[0].price
+        end
+
+        def quantity
+          @order.line_items[0].quantity
+        end
+
+        def timestamp
+          Time.parse(@order.created_at).to_i
         end
 
         def template
@@ -12,24 +32,24 @@ module Facebook
               type: 'template',
               payload: {
                 template_type: 'receipt',
-                recipient_name: 'Clement Leung',
-                order_number: '12345678902',
-                currency: 'USD',
+                recipient_name: name,
+                order_number: @order.order_number.to_s,
+                currency: @order.currency,
                 payment_method: 'N/A', # required field
                 order_url: 'http://petersapparel.parseapp.com/order?order_id=123456',
-                timestamp: Time.now.to_i, # time zone?
+                timestamp: timestamp,
                 elements: [
                   {
                     title: @product.title,
                     subtitle: @product.body_html,
-                    quantity: 1,
-                    price: @product.variants[0].price,
-                    currency: 'USD',
+                    quantity: quantity,
+                    price: price,
+                    currency: @order.currency,
                     image_url: @product.image.src
                   }
                 ],
                 summary: {
-                  total_cost: @product.variants[0].price
+                  total_cost: @order.total_line_items_price
                 }
               }
             }
