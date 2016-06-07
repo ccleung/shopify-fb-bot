@@ -5,13 +5,11 @@ module Facebook
     class Client
       class << self
         def send(payload)
-          begin
-            RestClient.post("#{ENDPOINT}?access_token=#{Facebook::Messenger.config.access_token}",
-                            payload.to_json, content_type: :json, accept: :json)
-          rescue RestClient::ExceptionWithResponse => err
-            Rails.logger.info ">>> #{err.response}"
-            raise
-          end
+          RestClient.post("#{ENDPOINT}?access_token=#{Facebook::Messenger.config.access_token}",
+                          payload.to_json, content_type: :json, accept: :json)
+        rescue RestClient::ExceptionWithResponse => err
+          Rails.logger.info ">>> #{err.response}"
+          raise
         end
 
         def send_message_template(recipient, template)

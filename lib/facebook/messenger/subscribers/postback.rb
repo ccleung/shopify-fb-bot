@@ -3,7 +3,7 @@ module Facebook
     module Subscriber
       # subscribers listen to events
       # and handle them in a call method
-      class ViewDetails < Base
+      class Postback < Base
         def call(event, opts = {})
           shop_session = opts[:shop_session]
           payload = JSON.parse(event.payload)

@@ -8,6 +8,6 @@ end
 
 Facebook::Messenger::Receiver.configure do |receiver|
   receiver.subscribe 'message', Facebook::Messenger::Subscriber::Message.new
-  receiver.subscribe 'postback', Facebook::Messenger::Subscriber::ViewDetails.new
+  receiver.subscribe 'postback', Facebook::Messenger::Subscriber::Postback.new
   receiver.subscribe 'delivery', Facebook::Messenger::Subscriber::Delivery.new
 end
