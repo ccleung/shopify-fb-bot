@@ -26,6 +26,7 @@ gem 'shopify_app'
 
 gem 'rest-client', '~> 1.8'
 
+gem 'rails_12factor', group: :production
 gem 'rollbar'
 gem 'oj', '~> 2.12.14'
 
