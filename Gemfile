@@ -26,6 +26,9 @@ gem 'shopify_app'
 
 gem 'rest-client', '~> 1.8'
 
+gem 'rollbar'
+gem 'oj', '~> 2.12.14'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
