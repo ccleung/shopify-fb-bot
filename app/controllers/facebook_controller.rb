@@ -1,7 +1,7 @@
 class FacebookController < ApplicationController
   protect_from_forgery with: :null_session
   before_action :set_session, only: [:webhook]
-  
+
   def verify
     verify_token = Facebook::Messenger.config.verify_token
     return render text: params['hub.challenge'] if params['hub.verify_token'] == verify_token
