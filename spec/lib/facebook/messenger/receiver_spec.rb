@@ -71,7 +71,7 @@ RSpec.describe Facebook::Messenger::Receiver do
         subject.receive(entry)
       end
 
-       it 'does not invoke message subscriber' do
+      it 'does not invoke message subscriber' do
         expect(message_subscriber).to_not receive(:call)
         subject.receive(entry)
       end
