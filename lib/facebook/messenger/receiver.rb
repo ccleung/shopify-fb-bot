@@ -6,8 +6,6 @@ module Facebook
         # expecting params[:entry]
         def receive(entries, opts = {})
           entries.each do |entry|
-            # TODO: save page id's
-            puts "PAGE_ID: #{entry[:id]}"
             entry[:messaging].each do |msg_event|
               # TODO: default for unhandled event
               event_type = event_type(msg_event)
