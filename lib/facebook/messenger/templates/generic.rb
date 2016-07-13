@@ -2,13 +2,11 @@ module Facebook
   module Messenger
     module Template
       # generic template
-      class ShopifyProducts
-        def initialize(products)
-          @products = products
-        end
+      class Generic
+        attr_accessor :generic_items
 
-        def elements
-          @products.map { |prod| ShopifyProduct.new(prod).template }
+        def initialize(opts = {})
+          @generic_items = opts[:generic_items] || []
         end
 
         def template
@@ -17,7 +15,7 @@ module Facebook
               type: 'template',
               payload: {
                 template_type: 'generic',
-                elements: elements
+                elements: generic_items.map(&:template)
               }
             }
           }

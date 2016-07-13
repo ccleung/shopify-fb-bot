@@ -1,17 +1,16 @@
 # https://github.com/hyperoslo/facebook-messenger
 require 'facebook/messenger/configuration'
 require 'facebook/messenger/client'
-require 'facebook/messenger/templates/shopify_product'
-require 'facebook/messenger/templates/shopify_products'
-require 'facebook/messenger/templates/shopify_order'
+require 'facebook/messenger/templates/button'
+require 'facebook/messenger/templates/generic'
+require 'facebook/messenger/templates/generic_item'
+require 'facebook/messenger/templates/receipt'
+require 'facebook/messenger/templates/receipt_item'
 require 'facebook/messenger/events/base'
 require 'facebook/messenger/events/message'
 require 'facebook/messenger/events/postback'
 require 'facebook/messenger/events/delivery'
 require 'facebook/messenger/subscribers/base'
-require 'facebook/messenger/subscribers/message'
-require 'facebook/messenger/subscribers/postback'
-require 'facebook/messenger/subscribers/delivery'
 require 'facebook/messenger/receiver'
 
 module Facebook
