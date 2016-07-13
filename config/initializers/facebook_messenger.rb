@@ -1,4 +1,4 @@
-require 'facebook/messenger'
+require 'fb/messenger'
 require 'shopify/request'
 require 'subscribers/message'
 require 'subscribers/postback'
