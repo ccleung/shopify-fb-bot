@@ -67,6 +67,8 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
+    fb-messenger (0.1.0)
+      rest-client (~> 1.8)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashdiff (0.3.0)
@@ -231,6 +233,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.1.0)
   factory_girl_rails (~> 4.7)
+  fb-messenger
   jbuilder (~> 2.0)
   jquery-rails
   oj (~> 2.12.14)
@@ -250,4 +253,4 @@ DEPENDENCIES
   webmock (~> 2.1)
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
