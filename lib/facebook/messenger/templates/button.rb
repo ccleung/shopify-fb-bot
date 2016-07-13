@@ -1,4 +1,4 @@
-module Facebook
+module Fb
   module Messenger
     module Template
       class Button

@@ -1,6 +1,6 @@
 module Template
   # generic template
-  class ShopifyProducts < Facebook::Messenger::Template::Generic
+  class ShopifyProducts < Fb::Messenger::Template::Generic
     def initialize(products)
       @products = products
     end

@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Facebook::Messenger::Client do
-  subject { Facebook::Messenger::Client }
+RSpec.describe Fb::Messenger::Client do
+  subject { Fb::Messenger::Client }
 
   let(:access_token) { 'fb_access_token' }
 
   before(:each) do
-    Facebook::Messenger.config.access_token = access_token
+    Fb::Messenger.config.access_token = access_token
   end
 
   describe '.send' do

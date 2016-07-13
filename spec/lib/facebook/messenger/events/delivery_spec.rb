@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Facebook::Messenger::Event::Delivery do
+RSpec.describe Fb::Messenger::Event::Delivery do
   let(:event_data) { build(:fb_msg_event, :delivery) }
-  subject { Facebook::Messenger::Event::Delivery.new(event_data) }
+  subject { Fb::Messenger::Event::Delivery.new(event_data) }
 
   context '#watermark' do
     it 'returns watermark' do

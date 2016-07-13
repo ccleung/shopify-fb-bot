@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Facebook::Messenger::Event::Message do
+RSpec.describe Fb::Messenger::Event::Message do
   let(:event_data) { build(:fb_msg_event, :message) }
-  subject { Facebook::Messenger::Event::Message.new(event_data) }
+  subject { Fb::Messenger::Event::Message.new(event_data) }
 
   context '#text' do
     it 'returns text' do

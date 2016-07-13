@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Facebook::Messenger::Template::Button do
+RSpec.describe Fb::Messenger::Template::Button do
   context '#type' do
     it 'can set type' do
       subject.type = 'postback'

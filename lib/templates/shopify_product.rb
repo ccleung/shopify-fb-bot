@@ -1,6 +1,6 @@
 module Template
   # converts shopfiy product to template
-  class ShopifyProduct < Facebook::Messenger::Template::GenericItem
+  class ShopifyProduct < Fb::Messenger::Template::GenericItem
     def initialize(product)
       @product = product
     end
@@ -15,9 +15,9 @@ module Template
 
     def buttons
       [
-        Facebook::Messenger::Template::Button.new(type: 'postback',
+        Fb::Messenger::Template::Button.new(type: 'postback',
                                                   title: 'Order', payload: order_info_payload),
-        Facebook::Messenger::Template::Button.new(type: 'postback',
+        Fb::Messenger::Template::Button.new(type: 'postback',
                                                   title: 'View Details', payload: view_details_payload)
       ]
     end

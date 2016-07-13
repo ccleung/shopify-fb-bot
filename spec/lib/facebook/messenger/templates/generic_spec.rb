@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Facebook::Messenger::Template::Generic do
+RSpec.describe Fb::Messenger::Template::Generic do
   context '#template' do
-    let(:generic_item) { Facebook::Messenger::Template::GenericItem.new }
+    let(:generic_item) { Fb::Messenger::Template::GenericItem.new }
 
     before(:each) do
       subject.generic_items << generic_item

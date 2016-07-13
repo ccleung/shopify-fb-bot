@@ -10,7 +10,7 @@ module Shopify
         end
       else
         err_msg = 'Facebook Page not connected to Store!'
-        Facebook::Messenger::Client.send_message_text(sender_id, err_msg)
+        Fb::Messenger::Client.send_message_text(sender_id, err_msg)
       end
     end
   end

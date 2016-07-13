@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Facebook::Messenger::Event::Postback do
+RSpec.describe Fb::Messenger::Event::Postback do
   let(:event_data) { build(:fb_msg_event, :postback) }
-  subject { Facebook::Messenger::Event::Postback.new(event_data) }
+  subject { Fb::Messenger::Event::Postback.new(event_data) }
 
   context '#payload' do
     it 'returns payload' do

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Facebook::Messenger::Receiver do
-  subject { Facebook::Messenger::Receiver }
+RSpec.describe Fb::Messenger::Receiver do
+  subject { Fb::Messenger::Receiver }
 
   describe '.receiver' do
     let(:message_subscriber) { Test::MessageSubscriber.new }
@@ -9,7 +9,7 @@ RSpec.describe Facebook::Messenger::Receiver do
     let(:delivery_subscriber) { Test::DeliverySubscriber.new }
 
     before(:each) do
-      Facebook::Messenger::Receiver.configure do |receiver|
+      Fb::Messenger::Receiver.configure do |receiver|
         receiver.subscribe 'message', message_subscriber
         receiver.subscribe 'postback', postback_subscriber
         receiver.subscribe 'delivery', delivery_subscriber
@@ -27,7 +27,7 @@ RSpec.describe Facebook::Messenger::Receiver do
 
       it 'invokes message subscriber' do
         expect(message_subscriber).to receive(:call)
-          .with(kind_of(Facebook::Messenger::Event::Message), {})
+          .with(kind_of(Fb::Messenger::Event::Message), {})
         subject.receive(entry)
       end
 
@@ -47,7 +47,7 @@ RSpec.describe Facebook::Messenger::Receiver do
 
       it 'invokes postback subscriber' do
         expect(postback_subscriber).to receive(:call)
-          .with(kind_of(Facebook::Messenger::Event::Postback), {})
+          .with(kind_of(Fb::Messenger::Event::Postback), {})
         subject.receive(entry)
       end
 
@@ -67,7 +67,7 @@ RSpec.describe Facebook::Messenger::Receiver do
 
       it 'invokes delivery subscriber' do
         expect(delivery_subscriber).to receive(:call)
-          .with(kind_of(Facebook::Messenger::Event::Delivery), {})
+          .with(kind_of(Fb::Messenger::Event::Delivery), {})
         subject.receive(entry)
       end
 

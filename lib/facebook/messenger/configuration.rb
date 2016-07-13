@@ -1,4 +1,4 @@
-module Facebook
+module Fb
   module Messenger
     class Configuration
       attr_accessor :access_token

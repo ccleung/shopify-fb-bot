@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Facebook::Messenger::Event::Base do
+RSpec.describe Fb::Messenger::Event::Base do
   let(:event_data) { build(:fb_msg_event) }
-  subject { Facebook::Messenger::Event::Base.new(event_data) }
+  subject { Fb::Messenger::Event::Base.new(event_data) }
 
   context '#timestamp' do
     it 'returns timestamp' do

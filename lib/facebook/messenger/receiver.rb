@@ -1,4 +1,4 @@
-module Facebook
+module Fb
   module Messenger
     # handles the incoming fb webhook data
     class Receiver
@@ -14,7 +14,7 @@ module Facebook
                 next
               end
               event_class = event_type.classify
-              event = "Facebook::Messenger::Event::#{event_class}".constantize.new(msg_event)
+              event = "Fb::Messenger::Event::#{event_class}".constantize.new(msg_event)
               config[event_type].call(event, opts)
             end
           end

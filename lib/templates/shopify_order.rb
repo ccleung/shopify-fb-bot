@@ -1,5 +1,5 @@
 module Template
-  class ShopifyOrder < Facebook::Messenger::Template::Receipt
+  class ShopifyOrder < Fb::Messenger::Template::Receipt
     def initialize(order, product, user_info)
       @order = order
       # only support purchase of one product
@@ -51,7 +51,7 @@ module Template
         currency: @order.currency,
         image_url: @product.image.src
       }
-      [Facebook::Messenger::Template::ReceiptItem.new(opts)]
+      [Fb::Messenger::Template::ReceiptItem.new(opts)]
     end
 
     def total_cost

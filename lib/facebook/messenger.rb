@@ -1,4 +1,3 @@
-# https://github.com/hyperoslo/facebook-messenger
 require 'facebook/messenger/configuration'
 require 'facebook/messenger/client'
 require 'facebook/messenger/templates/button'
@@ -13,8 +12,7 @@ require 'facebook/messenger/events/delivery'
 require 'facebook/messenger/subscribers/base'
 require 'facebook/messenger/receiver'
 
-module Facebook
-  # containers configuration
+module Fb
   module Messenger
     class << self
       def configure
@@ -22,7 +20,7 @@ module Facebook
       end
 
       def config
-        @config ||= Facebook::Messenger::Configuration.new
+        @config ||= Fb::Messenger::Configuration.new
       end
     end
   end

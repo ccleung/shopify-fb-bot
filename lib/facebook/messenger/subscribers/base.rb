@@ -1,4 +1,4 @@
-module Facebook
+module Fb
   module Messenger
     module Subscriber
       # subscribers listen to events

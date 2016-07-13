@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Facebook::Messenger::Template::GenericItem do
+RSpec.describe Fb::Messenger::Template::GenericItem do
   context '#template' do
-    let(:button) { Facebook::Messenger::Template::Button.new(type: 'type', title: 'title', payload: 'payload') }
+    let(:button) { Fb::Messenger::Template::Button.new(type: 'type', title: 'title', payload: 'payload') }
 
     before(:each) do
       subject.buttons << button
@@ -26,7 +26,7 @@ RSpec.describe Facebook::Messenger::Template::GenericItem do
       }
     end
 
-    subject { Facebook::Messenger::Template::GenericItem.new(opts) }
+    subject { Fb::Messenger::Template::GenericItem.new(opts) }
 
     it 'initializes title value' do
       expect(subject.title).to eq('title')

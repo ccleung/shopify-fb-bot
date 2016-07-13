@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Facebook::Messenger::Template::Receipt do
+RSpec.describe Fb::Messenger::Template::Receipt do
   context '#template' do
-    let(:receipt_item) { Facebook::Messenger::Template::ReceiptItem.new }
+    let(:receipt_item) { Fb::Messenger::Template::ReceiptItem.new }
 
     before(:each) do
       subject.receipt_items << receipt_item
@@ -65,7 +65,7 @@ RSpec.describe Facebook::Messenger::Template::Receipt do
       }
     end
 
-    subject { Facebook::Messenger::Template::Receipt.new(opts) }
+    subject { Fb::Messenger::Template::Receipt.new(opts) }
 
     it 'initializes recipient_name value' do
       expect(subject.recipient_name).to eq('recipient_name')

@@ -3,13 +3,13 @@ class FacebookController < ApplicationController
   before_action :set_session, only: [:webhook]
 
   def verify
-    verify_token = Facebook::Messenger.config.verify_token
+    verify_token = Fb::Messenger.config.verify_token
     return render text: params['hub.challenge'] if params['hub.verify_token'] == verify_token
     head 200
   end
 
   def webhook
-    Facebook::Messenger::Receiver.receive(params[:entry],
+    Fb::Messenger::Receiver.receive(params[:entry],
                                           shop_session: shop_session)
     head 200
   end
