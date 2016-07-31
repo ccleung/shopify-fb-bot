@@ -24,7 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'shopify_app'
 
-gem 'fb-messenger'
+gem 'fb-messenger', '~> 0.1.1'
 gem 'rest-client', '~> 1.8'
 
 gem 'rails_12factor', group: :production
